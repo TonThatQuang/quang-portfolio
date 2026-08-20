@@ -2,69 +2,59 @@ import { useEffect, useState } from "react";
 
 function ProfileEffect() {
     const [effects, setEffects] = useState([]);
+    const [showSecondEffect, setShowSecondEffect] = useState(false);
 
     useEffect(() => {
-        const loadEffect = async () => {
+        const loadEffects = async () => {
             try {
                 const response = await fetch(
-                    "http://localhost:3001/profile-effect"
+                    "https://quang-portfolio.onrender.com/profile-effect"
                 );
+
+                if (!response.ok) {
+                    throw new Error(
+                        `Backend trả về ${response.status}`
+                    );
+                }
 
                 const data = await response.json();
 
-                if (!data.success) {
-                    console.error(
-                        "Không lấy được Profile Effect:",
-                        data.error
-                    );
-                    return;
+                console.log("Profile Effect:", data);
+
+                if (data.success && data.effects) {
+                    setEffects(data.effects);
                 }
-
-                setEffects(data.effects || []);
-
             } catch (error) {
                 console.error(
-                    "Lỗi khi lấy Profile Effect:",
+                    "Không thể tải Profile Effect:",
                     error
                 );
             }
         };
 
-        loadEffect();
+        loadEffects();
     }, []);
 
-    return (
-        <div className="profile-effect">
-            {effects.map((effect, index) => (
-                <EffectLayer
-                    key={`${effect.src}-${index}`}
-                    effect={effect}
-                />
-            ))}
-        </div>
-    );
-}
-
-function EffectLayer({ effect }) {
-    const [visible, setVisible] = useState(false);
-
     useEffect(() => {
+        if (effects.length < 2) return;
+
+        const effect = effects[1];
+
         let startTimer;
+        let showTimer;
         let hideTimer;
-        let loopTimer;
 
         const runEffect = () => {
-            setVisible(true);
+            setShowSecondEffect(true);
 
             hideTimer = setTimeout(() => {
-                setVisible(false);
+                setShowSecondEffect(false);
 
-                if (effect.loop) {
-                    loopTimer = setTimeout(() => {
-                        runEffect();
-                    }, effect.loopDelay || 0);
-                }
-            }, effect.duration);
+                showTimer = setTimeout(() => {
+                    runEffect();
+                }, effect.loopDelay || 0);
+
+            }, effect.duration || 0);
         };
 
         startTimer = setTimeout(() => {
@@ -73,24 +63,43 @@ function EffectLayer({ effect }) {
 
         return () => {
             clearTimeout(startTimer);
+            clearTimeout(showTimer);
             clearTimeout(hideTimer);
-            clearTimeout(loopTimer);
         };
-    }, [effect]);
+    }, [effects]);
 
-    if (!visible) {
+    if (effects.length === 0) {
         return null;
     }
 
     return (
-        <img
-            className="profile-effect-layer"
-            src={effect.src}
-            alt=""
-            style={{
-                zIndex: effect.zIndex
-            }}
-        />
+        <div className="profile-effect">
+
+            {/* Effect 1 */}
+            {effects[0] && (
+                <img
+                    className="profile-effect-layer"
+                    src={effects[0].src}
+                    alt=""
+                    style={{
+                        zIndex: effects[0].zIndex
+                    }}
+                />
+            )}
+
+            {/* Effect 2 */}
+            {effects[1] && showSecondEffect && (
+                <img
+                    className="profile-effect-layer"
+                    src={effects[1].src}
+                    alt=""
+                    style={{
+                        zIndex: effects[1].zIndex
+                    }}
+                />
+            )}
+
+        </div>
     );
 }
 
