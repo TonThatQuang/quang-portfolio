@@ -1,0 +1,467 @@
+html,
+body,
+#root {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+}
+
+#root {
+    min-height: 100dvh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.card {
+    position: relative;
+
+    width: min(420px, calc(100vw - 24px));
+    min-height: 760px;
+
+    margin: 20px auto 24px;
+
+    overflow: hidden;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #0b0b0f 0%,
+            #15151b 35%,
+            #5f5f67 65%,
+            #66666d 100%
+        ) padding-box,
+        linear-gradient(
+            to bottom,
+            #1f1f29 0%,
+            #434352 35%,
+            #8e8e9a 65%,
+            #8a8a93 100%
+        ) border-box;
+
+    border: 3px solid transparent;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.45);
+    box-sizing: border-box;
+
+    opacity: 0;
+    transform: translateY(18px);
+    animation: cardEnter .7s ease-out .1s forwards;
+}
+
+@media (max-width: 768px) {
+    html,
+    body,
+    #root {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    #root {
+        align-items: flex-start;
+    }
+
+    .card {
+        height: calc(100dvh - 24px);
+        min-height: auto;
+        margin: 12px auto;
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        scrollbar-width: none;
+    }
+
+    .card::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@keyframes cardEnter {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* ========================= */
+.profile-effect {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 5;
+}
+
+.profile-effect-layer {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    user-select: none;
+}
+/* ========================= */
+
+/* .banner{
+
+    height:170px;
+
+    background-image:url("/public/img/anhnen.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+} */
+
+.banner{
+    position: relative;
+    height: 170px;
+    overflow: hidden;
+}
+
+.banner-video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ========================= */
+
+.avatar {
+    position: absolute;
+
+    top: 105px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    border: 2px solid #222;
+
+    background: #222;
+
+    overflow: visible;
+}
+
+.avatar-image {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.avatar-decoration {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 120%;
+    height: 120%;
+
+    transform: translate(-50%, -50%);
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+/* =========================
+   DISCORD STATUS
+========================= */
+
+.discord-status {
+    position: absolute;
+
+    right: 0;
+    bottom: 0;
+
+    width: 26px;
+    height: 26px;
+
+    border-radius: 50%;
+
+    border: 4px solid #0b0b0f;
+
+    box-sizing: border-box;
+
+    z-index: 3;
+}
+
+
+.discord-status.online {
+    background: #23a559;
+}
+
+
+.discord-status.idle {
+    background: #f0b232;
+}
+
+
+.discord-status.dnd {
+    background: #f23f43;
+}
+
+
+.discord-status.offline {
+    background: #80848e;
+}
+/* ========================= */
+.user-info{
+    margin-top:70px;
+    padding:0 16px;
+    text-align:center;
+    color:white;
+}
+
+.user-header{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;      /* khoảng cách giữa Sáng và he/him */
+}
+
+.user-info h2{
+    font-size:clamp(26px, 5.2vw, 34px);
+    margin:0;      /* bỏ margin mặc định */
+}
+
+.user-info span{
+    align-self:flex-end;
+    margin-bottom:6px;
+}
+
+.social{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:8px;
+
+    margin-top:18px;
+
+}
+
+.social-box{
+
+    width:23px;
+
+    height:23px;
+
+    background:#2f3136;
+
+    border-radius:12px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:1px solid rgba(255,255,255,.05);
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.social-box img,
+.social-box svg {
+
+    width:22px;
+
+    height:22px;
+
+    object-fit:contain;
+
+}
+
+.social-box:hover{
+
+    transform:translateY(-3px);
+
+    background:#3b3d42;
+
+}
+
+.tooltip{
+
+    position:absolute;
+
+    bottom:-40px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:#111;
+
+    color:white;
+
+    font-size:12px;
+
+    padding:6px 10px;
+
+    border-radius:6px;
+
+    white-space:nowrap;
+
+    opacity:0;
+
+    transition:.25s;
+
+    pointer-events:none;
+
+}
+
+.social-box:hover .tooltip{
+
+    opacity:1;
+
+}
+
+.profile-info{
+    margin-top:24px;
+    padding:0 clamp(16px, 5vw, 32px);
+    text-align:center;
+}
+
+.profile-section{
+    margin-bottom:14px;
+}
+
+.profile-title{
+    color:#b9bbbe;
+    font-size:13px;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:2px;
+}
+
+.profile-link{
+    display:inline-block;
+    color:#5da9ff;
+    font-size:15px;
+    text-decoration:none;
+    margin-bottom:9px;
+    transition:color .2s;
+}
+
+.profile-link:hover{
+    color:#84c1ff;
+    text-decoration:underline;
+}
+
+.profile-text{
+    color:#dcddde;
+    font-size:15px;
+    line-height:1.4;
+    margin:0;
+}
+
+.social-links{
+    display: flex;
+    justify-content: center;
+    gap: clamp(12px, 4vw, 18px);
+    margin-top: 12px;
+}
+
+.social-item{
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 16px;
+
+    background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, .16) 0%,
+    rgba(255, 255, 255, .04) 50%,
+    rgba(255, 255, 255, .14) 100%
+);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    color: #e8e8e8;
+
+    font-size: 28px;
+
+    text-decoration: none;
+
+    transition: .3s;
+
+    box-shadow:
+        inset 0 1px rgba(255,255,255,.05),
+        0 5px 10px rgba(0,0,0,.15);
+}
+
+.social-item:hover{
+
+    transform: translateY(-4px);
+
+    background: rgba(255,255,255,.15);
+
+}
+
+@media (max-width: 480px) {
+    .card {
+        min-height: auto;
+        border-radius: 20px;
+    }
+
+    .banner {
+        height: 140px;
+    }
+
+    .avatar {
+        top: 88px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .user-info {
+        margin-top: 58px;
+    }
+
+    .profile-info {
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,206 @@
+.game-presence {
+    width: calc(100% - 32px);
+
+    margin: 18px auto 0;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(14px);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.game-header {
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: #c8c8ce;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+}
+
+.playing-dot {
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #ff3b45;
+
+    box-shadow:
+        0 0 8px rgba(255, 59, 69, 0.5);
+}
+
+
+/* =========================
+   GAME CONTENT
+========================= */
+
+.game-content {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 12px 18px;
+}
+
+
+/* =========================
+   GAME ICON
+========================= */
+
+.game-icon {
+
+    width: 72px;
+    height: 72px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.15);
+
+    font-size: 34px;
+}
+
+
+/* =========================
+   GAME INFO
+========================= */
+
+.game-info {
+
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.game-name {
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.game-details {
+
+    color: #d2d2d6;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.game-state {
+
+    color: #c1c1c7;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================
+   ELAPSED
+========================= */
+
+.game-elapsed {
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 0 18px;
+
+    box-sizing: border-box;
+
+    background: rgba(0, 0, 0, 0.18);
+
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: #d0d0d5;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+.elapsed-dot {
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: #111318;
+}

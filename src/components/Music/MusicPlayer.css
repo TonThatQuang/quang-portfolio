@@ -1,0 +1,262 @@
+.music-card {
+  width: min(380px, calc(100% - 32px));
+  max-width: 100%;
+  margin: 24px auto 20px;
+  padding: 11px 13px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.15));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(20px);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.35), 0 12px 30px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+}
+
+.album {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.album.rotate {
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.music-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.music-info h2 {
+  color: white;
+  font-size: 15px;
+  margin: 0 0 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-info p {
+  color: #ececec;
+  font-size: 13px;
+  margin: 0 0 6px;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.progress {
+  width: 100%;
+  appearance: none;
+  height: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  outline: none;
+
+  background: linear-gradient(to right,
+      #c8cbc9 0%,
+      #bababe var(--progress),
+      rgba(255, 255, 255, .15) var(--progress),
+      rgba(255, 255, 255, .15) 100%);
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.25),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.progress::-webkit-slider-thumb {
+  appearance: none;
+  width: 0;
+  height: 0;
+}
+
+.progress::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  border: none;
+}
+
+.time {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  color: #ddd;
+  font-size: 12px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  /* Cho phép controls mở rộng */
+  transition: width 0.3s ease;
+}
+
+.btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: 0.25s;
+}
+
+.btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.play {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #222;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  transition: 0.25s;
+
+  padding: 0;
+}
+
+.play svg {
+  transform: translateX(1px);
+}
+
+.play:hover {
+  transform: scale(1.05);
+}
+
+.volume {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+
+  width: 30px;
+
+  transition: width 0.3s ease;
+  
+}
+
+/* Khi hover vào volume → mở rộng sang trái/phải */
+.volume:hover {
+  width: 105px;
+}
+
+/* Icon loa */
+.volume .btn {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+/* Thanh volume */
+.volume-slider {
+  position: absolute;
+
+  right: -4px;
+  top: 50%;
+
+  width: 75px;
+  height: 5px;
+
+  transform: translateY(calc(-50% - 2px)) scaleX(0);
+  transform-origin: right center;
+
+  appearance: none;
+  border-radius: 10px;
+
+  background: linear-gradient(to right,
+      #abd7ce 0%,
+      #76b6cf var(--volume),
+      rgba(255, 255, 255, .25) var(--volume),
+      rgba(255, 255, 255, .25) 100%);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    transform 0.3s ease,
+    opacity 0.2s ease;
+    box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.25),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.volume:hover .volume-slider {
+  transform: translateY(calc(-50% - 4px)) scaleX(1);
+
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  appearance: none;
+
+  width: 12px;
+  height: 12px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: white;
+
+  cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: white;
+
+  cursor: pointer;
+}
+
+@media (max-width: 420px) {
+  .music-card {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .music-info {
+    width: 100%;
+  }
+
+  .controls {
+    margin-top: 6px;
+  }
+
+  .volume {
+    display: none;
+  }
+}
