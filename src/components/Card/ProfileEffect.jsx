@@ -8,7 +8,7 @@ function ProfileEffect() {
         const loadEffects = async () => {
             try {
                 const response = await fetch(
-                    // "https://quang-portfolio.onrender.com/profile-effect"
+                    "https://quang-portfolio.onrender.com/profile-effect"
                 );
 
                 if (!response.ok) {
