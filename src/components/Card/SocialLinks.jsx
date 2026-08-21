@@ -20,7 +20,7 @@ const socialLinks = [
     icon: FaInstagram,
   },
   {
-    href: "https://github.com/",
+    href: "https://github.com/TonThatQuang",
     label: "GitHub",
     icon: FaGithub,
   },
