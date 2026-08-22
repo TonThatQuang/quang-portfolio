@@ -10,6 +10,7 @@ import MusicPlayer from "../Music/MusicPlayer";
 import Contact from "../Contact/Contact";
 import GamePresence from "./GamePresence";
 import ProfileEffect from "./ProfileEffect";
+import Clock from "../Clock/Clock";
 
 
 function Card() {
@@ -35,7 +36,9 @@ function Card() {
             <MusicPlayer />
 
             <GamePresence />
-
+            
+            <Clock />
+            
             <Contact />
 
         </div>
